@@ -12,7 +12,8 @@ function addToCollection(title, artist, yearPublished) {
 }
 
 /*
-* Takes a collection,
+* Takes a collection and console.logs the number of items, as well as each album
+* in the collection in a single string notation
 */
 function showCollection(album) {
   console.log(album.length);
@@ -21,7 +22,18 @@ function showCollection(album) {
   }
 }
 
+function findByArtist(artist) {
+  let matches = [];
+  for(let album of collection) {
+    if(album.artist === artist)
+    {
+      matches.push(album);
+    }
+  }
+  return matches;
+}
 
+//===TESTS===\\
 console.log(addToCollection('The Gereg', 'The Hu', 2019)); //first album
 console.log(addToCollection('Revolution Radio', 'Green Day', 2016)); //second album
 console.log(addToCollection('Save Rock and Roll', 'Fall Out Boy', 2013)); //third album
@@ -31,3 +43,5 @@ console.log(addToCollection('Folie a Deux', 'Fall Out Boy', 2008)); //sixth albu
 console.log(collection);
 
 showCollection(collection);
+console.log(findByArtist('Green Day')); //should return two albums
+console.log(findByArtist('Johnny Cash')); //should return an empty array
